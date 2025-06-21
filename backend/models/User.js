@@ -7,39 +7,22 @@ const addressSchema = new mongoose.Schema({
   postalCode: String,
   country: String,
   isDefault: { type: Boolean, default: false }
-});
+}, { _id: false });
 
 const userSchema = new mongoose.Schema(
   {
-    name: { 
-        type: String, 
-        required: true 
-    },
-    email: { 
-        type: String, 
-        required: true, 
-        unique: true 
-    },
-    password: { 
-        type: String 
-    }, 
-    googleId: { 
-        type: String 
-    },
-    profilePic: { 
-        type: String, 
-        default: '' 
-    },
+    firstName: { type: String, required: true },
+    lastName: { type: String, required: true },
+    phone: { type: String, required: true },
+    email: { type: String, required: true, unique: true },
+    password: { type: String }, // Not required for Google OAuth users
+    googleId: { type: String },
+    profilePic: { type: String, default: '' },
     addresses: [addressSchema],
-    isBanned: { 
-        type: Boolean, 
-        default: false 
-    },
-    role: { 
-        type: String, 
-        default: 'user', 
-        enum: ['user', 'admin'] 
-    }
+    resetPasswordToken: { type: String },
+    resetPasswordExpires: { type: Date },
+    isBanned: { type: Boolean, default: false },
+    role: { type: String, default: 'user', enum: ['user', 'admin'] }
   },
   { timestamps: true }
 );
