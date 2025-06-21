@@ -11,14 +11,35 @@ const addressSchema = new mongoose.Schema({
 
 const userSchema = new mongoose.Schema(
   {
-    name: { type: String, required: true },
-    email: { type: String, required: true, unique: true },
-    password: { type: String }, 
-    googleId: { type: String },
-    profilePic: { type: String, default: '' },
+    name: { 
+        type: String, 
+        required: true 
+    },
+    email: { 
+        type: String, 
+        required: true, 
+        unique: true 
+    },
+    password: { 
+        type: String 
+    }, 
+    googleId: { 
+        type: String 
+    },
+    profilePic: { 
+        type: String, 
+        default: '' 
+    },
     addresses: [addressSchema],
-    isBanned: { type: Boolean, default: false },
-    role: { type: String, default: 'user', enum: ['user', 'admin'] }
+    isBanned: { 
+        type: Boolean, 
+        default: false 
+    },
+    role: { 
+        type: String, 
+        default: 'user', 
+        enum: ['user', 'admin'] 
+    }
   },
   { timestamps: true }
 );
