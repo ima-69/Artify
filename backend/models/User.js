@@ -15,7 +15,7 @@ const userSchema = new mongoose.Schema(
     lastName: { type: String, required: true },
     phone: { type: String, required: true },
     email: { type: String, required: true, unique: true },
-    password: { type: String }, // Not required for Google OAuth users
+    password: { type: String }, // Not required for Google OAuth
     googleId: { type: String },
     profilePic: { type: String, default: '' },
     addresses: [addressSchema],
